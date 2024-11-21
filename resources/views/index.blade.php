@@ -16,7 +16,7 @@
                 </div>
                 <div class="btns">
                     <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-success">update</a>
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>

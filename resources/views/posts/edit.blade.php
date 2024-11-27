@@ -19,7 +19,7 @@
     </div>
     <div class="mb-3">
         <label for="formFile" class="form-label">choose image:</label>
-        <input class="form-control" type="file" id="formFile" name="image">
+        <input class="form-control" type="file" id="formFile" name="image[]" multiple>
     </div>
     <input type="submit" value="send" class="btn btn-primary w-50 d-block m-auto">
 </form>

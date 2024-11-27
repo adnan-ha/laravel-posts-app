@@ -11,4 +11,11 @@ class Post extends Model
         "description",
         "image"
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'image' => 'array'
+        ];
+    }
 }

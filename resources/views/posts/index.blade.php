@@ -9,7 +9,9 @@
     @forelse ($posts as $post)
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="/images/posts/{{ $post->image }}" class="card-img-top">
+                @if ($post->image)
+                    <img src="/images/posts/{{ $post->image[0] }}" class="card-img-top">
+                @endif
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->description }}</p>

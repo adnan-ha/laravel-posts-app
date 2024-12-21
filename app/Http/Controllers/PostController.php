@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 
 class PostController extends Controller
 {
+    use AuthorizesRequests;
     //Display a listing of the resource.
     public function index()
     {
@@ -90,6 +94,7 @@ class PostController extends Controller
     //Remove the specified resource from storage.
     public function destroy(Post $post)
     {
+        $this->authorize('manageUser', User::class);
         if ($post->image) {
             foreach ($post->image as $image) {
                 if (file_exists(public_path('images/posts/' . $image))) {

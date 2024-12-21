@@ -5,6 +5,13 @@
 @section('content')
 @section('headTitle', 'Posts:')
 <a href="{{ route('posts.create') }}" class="btn btn-primary my-3">Add new post</a>
+@can('manageUser', App\Models\User::class)
+    <a href="{{ route('users.index') }}" class="btn btn-warning">Users</a>
+@endcan
+<form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button class="btn btn-danger position-absolute top-0 start-100">Logout</button>
+</form>
 <div class="cards row row-cols-1 row-cols-sm-2 row-cols-lg-3">
     @forelse ($posts as $post)
         <div class="col mb-4">
@@ -18,11 +25,13 @@
                 </div>
                 <div class="btns">
                     <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-success">update</a>
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                    </form>
+                    @can('manageUser', App\Models\User::class)
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    @endcan
                     <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-secondary float-end">show →</a>
                 </div>
             </div>

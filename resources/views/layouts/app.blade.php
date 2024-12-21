@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container position-relative">
         <h1 class="mt-5">@yield('headTitle')</h1>
         @yield('content')
     </div>

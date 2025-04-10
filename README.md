@@ -1,4 +1,4 @@
-# Laravel Blog App
+# Laravel Posts App
 
 ## Requirements
 
